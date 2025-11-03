@@ -1,0 +1,24 @@
+{
+  "name": "ch-pbe1-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node --watch src/simple-server/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarVergara/ch-pbe1-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MarVergara/ch-pbe1-project/issues"
+  },
+  "homepage": "https://github.com/MarVergara/ch-pbe1-project#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
