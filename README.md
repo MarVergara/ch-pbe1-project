@@ -37,7 +37,7 @@ Incluye endpoints REST para:
 - 📦 **Productos:** CRUD completo (`/api/products`)
 - 🛒 **Carritos:** creación y gestión de productos asociados (`/api/carts`)
 
-Para más detalles sobre la entrega, ver el archivo [README_ENTREGA1.md](./ENTREGA-1/README.md).
+Para más detalles sobre la entrega, ver el archivo [README_ENTREGA_1.md](./ENTREGA-1/README.md).
 
 ---
 
