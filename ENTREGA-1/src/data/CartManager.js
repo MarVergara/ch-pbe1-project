@@ -38,18 +38,38 @@ class CartManager {
     return carts.find((c) => c.id === id);
   }
 
-  async addProduct(cartId, productId) {
+  // async addProduct(cartId, productId) {
+  //   const carts = await this.#readFile();
+  //   const cartIndex = carts.findIndex((c) => c.id === cartId);
+  //   if (cartIndex === -1) return null;
+
+  //   const cart = carts[cartIndex];
+  //   const product = cart.products.find((p) => p.id === productId);
+
+  //   if (product) {
+  //     product.quantity += 1;
+  //   } else {
+  //     cart.products.push({ id: productId, quantity: 1 });
+  //   }
+
+  //   carts[cartIndex] = cart;
+  //   await this.#writeFile(carts);
+  //   return cart;
+  // }
+
+
+  async addProduct(cartId, product) {
     const carts = await this.#readFile();
     const cartIndex = carts.findIndex((c) => c.id === cartId);
     if (cartIndex === -1) return null;
 
     const cart = carts[cartIndex];
-    const product = cart.products.find((p) => p.id === productId);
+    const existingProduct = cart.products.find((p) => p.id === product.id);
 
-    if (product) {
-      product.quantity += 1;
+    if (existingProduct) {
+      existingProduct.quantity += 1;
     } else {
-      cart.products.push({ id: productId, quantity: 1 });
+      cart.products.push({ ...product, quantity: 1 });
     }
 
     carts[cartIndex] = cart;
