@@ -2,6 +2,12 @@ const express = require("express");
 const app = express();
 const { v4: uuidv4 } = require("uuid");
 
+const ProductManager = require("./data/ProductManager");
+const CartManager = require("./data/CartManager");
+
+const productManager = new ProductManager();
+const cartManager = new CartManager();
+
 // MIDDLEWARES
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -36,7 +42,7 @@ const products = [
 const carts = [];
 
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.send("Hello ENTREGA-1!");
 });
 
 // GET all products
