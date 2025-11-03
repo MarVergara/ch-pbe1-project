@@ -153,19 +153,30 @@ app.get("/api/carts/:cid", (req, res) => {
 
 // POST add product to cart
 
-app.post("/api/carts/:cid/products/:pid", (req, res) => {
-    const { cid, pid } = req.params;
-    const cart = carts.find(c => c.id === cid);
-    const product = products.find(p => p.id === pid);
-    if (!cart) {
-        return res.status(404).json({ message: "Cart not found" });
-    }
-    if (!product) {
-        return res.status(404).json({ message: "Product not found" });
-    }
-    cart.products.push(product);
-    res.status(200).json({ success: true, cart });
+app.post("/api/carts/:cid/product/:pid", (req, res) => {
+  const { cid, pid } = req.params;
+  const cart = carts.find((c) => c.id === cid);
+  const product = products.find((p) => p.id === pid);
+
+  if (!cart) {
+    return res.status(404).json({ message: "Cart not found" });
+  }
+
+  if (!product) {
+    return res.status(404).json({ message: "Product not found" });
+  }
+
+  const existingProduct = cart.products.find((p) => p.id === pid);
+
+  if (existingProduct) {
+    existingProduct.quantity += 1;
+  } else {
+    cart.products.push({ id: product.id, name: product.name, price: product.price, quantity: 1 });
+  }
+
+  res.status(200).json({ success: true, cart });
 });
+
 
 
 module.exports = app;
